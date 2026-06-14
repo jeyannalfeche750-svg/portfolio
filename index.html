@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juan Dela Cruz — Web &amp; Systems Developer</title>
+
+<!--
+  ============================================================
+  HOW TO CUSTOMIZE THIS PORTFOLIO
+  ============================================================
+  1. Replace "Juan Dela Cruz" everywhere with your name.
+  2. Update the role/tagline in the HERO section.
+  3. Edit the ABOUT section paragraphs and quick facts.
+  4. Edit the SKILLS tags to match your own stack.
+  5. In the SYSTEMS section, replace each card's:
+       - Title, description, tech tags
+       - "Launch System" link  -> your live demo / hosted link
+       - "Source Code" link    -> your GitHub repo link
+     This is the part your employer will click to view your work.
+  6. Update CONTACT details (email, phone, links).
+  7. Replace the favicon / avatar initials if you like.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #F7F4EE;
+    --bg-panel: #FFFFFF;
+    --grid-line: rgba(45, 95, 139, 0.08);
+    --ink: #1B2430;
+    --ink-soft: #64748B;
+    --accent: #2D5F8B;
+    --accent-warm: #E8633C;
+    --border: #D7E1EA;
+    --tag-bg: #E7EEF5;
+    --good: #16A34A;
+    --radius: 10px;
+    --max-w: 1080px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  a{ color: var(--accent); }
+
+  .wrap{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Typography helpers ---------- */
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .section-title{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    margin-bottom: 8px;
+  }
+
+  .section-sub{
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin-bottom: 40px;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247, 244, 238, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav__inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 16px 24px;
+  }
+
+  .nav__logo{
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+  }
+  .nav__logo span{ color: var(--accent-warm); }
+
+  .nav__links{
+    display:flex;
+    gap: 28px;
+    list-style:none;
+  }
+
+  .nav__links a{
+    color: var(--ink);
+    text-decoration:none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position:relative;
+    padding: 4px 0;
+  }
+
+  .nav__links a:hover{ color: var(--accent); }
+
+  .nav__cta{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    border: 1px solid var(--ink);
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    text-decoration:none;
+    color: var(--ink);
+    transition: 0.2s ease;
+  }
+  .nav__cta:hover{ background: var(--ink); color: var(--bg); }
+
+  .nav__toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding: 4px;
+  }
+  .nav__toggle span{
+    width: 22px; height: 2px; background: var(--ink); display:block;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 90px 0 70px;
+  }
+
+  .blueprint-frame{
+    position:relative;
+    border: 1px solid var(--border);
+    background: var(--bg-panel);
+    border-radius: var(--radius);
+    padding: clamp(28px, 5vw, 56px);
+  }
+
+  .blueprint-frame::before,
+  .blueprint-frame::after{
+    content:'';
+    position:absolute;
+    width: 26px; height: 26px;
+    border: 2px solid var(--accent);
+  }
+  .blueprint-frame::before{ top:-2px; left:-2px; border-right:none; border-bottom:none; }
+  .blueprint-frame::after{ bottom:-2px; right:-2px; border-left:none; border-top:none; }
+
+  .hero__name{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size: clamp(2.4rem, 8vw, 4.6rem);
+    line-height: 1.05;
+    margin: 14px 0 6px;
+  }
+
+  .hero__role{
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+
+  .hero__tagline{
+    max-width: 56ch;
+    margin-bottom: 32px;
+  }
+
+  .hero__specs{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    margin-bottom: 32px;
+  }
+
+  .spec dt{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .spec dd{
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .btn-row{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 13px 26px;
+    border-radius: var(--radius);
+    text-decoration:none;
+    transition: 0.2s ease;
+    border: 1px solid transparent;
+  }
+
+  .btn--primary{
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn--primary:hover{ background: var(--accent); }
+
+  .btn--ghost{
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .btn--ghost:hover{ background: var(--ink); color: var(--bg); }
+
+  /* ---------- Generic section spacing ---------- */
+  section{ padding: 70px 0; }
+  section + section{ border-top: 1px solid var(--border); }
+
+  /* ---------- About ---------- */
+  .about__grid{
+    display:grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items:start;
+  }
+
+  .avatar{
+    width: 160px; height: 160px;
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: var(--bg-panel);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size: 2.6rem;
+    border: 1px solid var(--border);
+  }
+
+  .about__facts{
+    list-style:none;
+    margin-top: 24px;
+    display:grid;
+    gap: 10px;
+  }
+  .about__facts li{
+    font-size: 0.92rem;
+    display:flex;
+    gap: 10px;
+  }
+  .about__facts b{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    color: var(--accent);
+    min-width: 120px;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    padding-top: 2px;
+  }
+
+  /* ---------- Skills ---------- */
+  .skills__group{ margin-bottom: 26px; }
+  .skills__label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .tag-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 10px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    background: var(--tag-bg);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+  }
+
+  /* ---------- Systems ---------- */
+  .systems__grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .card{
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .card__head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+  }
+
+  .status{
+    display:flex;
+    align-items:center;
+    gap: 8px;
+    text-transform: uppercase;
+  }
+
+  .status-dot{
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--good);
+    box-shadow: 0 0 0 0 rgba(22,163,74,0.5);
+    animation: pulse 2.2s infinite;
+  }
+
+  @keyframes pulse{
+    0%   { box-shadow: 0 0 0 0 rgba(22,163,74,0.45); }
+    70%  { box-shadow: 0 0 0 7px rgba(22,163,74,0); }
+    100% { box-shadow: 0 0 0 0 rgba(22,163,74,0); }
+  }
+
+  .card__body{
+    padding: 22px 20px 8px;
+    flex:1;
+  }
+
+  .card__title{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  .card__desc{
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  .card__footer{
+    padding: 18px 20px 22px;
+    display:flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .card__footer .btn{
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact__grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .contact__item{
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+
+  .contact__item .eyebrow{ display:block; margin-bottom: 8px; }
+
+  .contact__item a{
+    text-decoration:none;
+    font-weight:600;
+    color: var(--ink);
+  }
+  .contact__item a:hover{ color: var(--accent); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding: 30px 0 50px;
+    text-align:center;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .status-dot{ animation: none; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px){
+    .about__grid{ grid-template-columns: 1fr; }
+    .avatar{ width: 110px; height: 110px; font-size: 1.8rem; }
+    .hero__specs{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 700px){
+    .nav__links, .nav__cta{ display:none; }
+    .nav__toggle{ display:flex; }
+
+    .nav.open .nav__links{
+      display:flex;
+      flex-direction:column;
+      gap: 0;
+      position:absolute;
+      top: 100%; left:0; right:0;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 24px 16px;
+    }
+    .nav.open .nav__links a{
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav.open .nav__cta{
+      display:inline-flex;
+      margin: 12px 24px 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav" id="nav">
+    <div class="nav__inner wrap">
+      <div class="nav__logo">&lt;Juan<span>DelaCruz</span>/&gt;</div>
+      <nav>
+        <ul class="nav__links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#systems">Systems</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="nav__cta" href="#contact">Hire Me</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="blueprint-frame">
+        <p class="eyebrow">Portfolio — Rev. 2026</p>
+        <h1 class="hero__name">Juan Dela Cruz</h1>
+        <p class="hero__role">Web &amp; Systems Developer</p>
+        <p class="hero__tagline">
+          I design and build practical software systems — from inventory
+          and records management tools to web applications — focused on
+          solving real problems for real users.
+        </p>
+
+        <dl class="hero__specs">
+          <div class="spec">
+            <dt>Role</dt>
+            <dd>Full-Stack Developer</dd>
+          </div>
+          <div class="spec">
+            <dt>Focus</dt>
+            <dd>Web Systems</dd>
+          </div>
+          <div class="spec">
+            <dt>Status</dt>
+            <dd>Open to Work</dd>
+          </div>
+          <div class="spec">
+            <dt>Location</dt>
+            <dd>General Santos City, PH</dd>
+          </div>
+        </dl>
+
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#systems">View My Systems</a>
+          <a class="btn btn--ghost" href="#contact">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="wrap reveal">
+      <p class="eyebrow">About</p>
+      <h2 class="section-title">A bit about me</h2>
+      <div class="about__grid">
+        <div class="avatar">JD</div>
+        <div>
+          <p>
+            I'm a developer based in General Santos City, Philippines,
+            with a strong interest in building systems that make everyday
+            tasks easier — whether that's tracking inventory, managing
+            records, or helping a small business move online. I enjoy
+            taking a project from an idea or a problem statement all the
+            way to a working, deployed system.
+          </p>
+          <p style="margin-top:12px;">
+            Below you'll find the systems I've built, along with links you
+            can click to try them out live, plus the source code on GitHub.
+          </p>
+
+          <ul class="about__facts">
+            <li><b>Education</b> Bachelor of Science in Information Technology</li>
+            <li><b>Based in</b> General Santos City, Soccsksargen, Philippines</li>
+            <li><b>Currently</b> Looking for entry-level / junior developer roles</li>
+            <li><b>Languages</b> English, Filipino</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills">
+    <div class="wrap reveal">
+      <p class="eyebrow">Skills</p>
+      <h2 class="section-title">Tools &amp; technologies</h2>
+      <p class="section-sub">A snapshot of what I use to design, build, and ship systems.</p>
+
+      <div class="skills__group">
+        <p class="skills__label">Languages</p>
+        <div class="tag-row">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">PHP</span>
+          <span class="tag">Java</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+
+      <div class="skills__group">
+        <p class="skills__label">Frameworks &amp; Libraries</p>
+        <div class="tag-row">
+          <span class="tag">Bootstrap</span>
+          <span class="tag">React</span>
+          <span class="tag">Laravel</span>
+          <span class="tag">Node.js</span>
+        </div>
+      </div>
+
+      <div class="skills__group">
+        <p class="skills__label">Databases</p>
+        <div class="tag-row">
+          <span class="tag">MySQL</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">MongoDB</span>
+        </div>
+      </div>
+
+      <div class="skills__group">
+        <p class="skills__label">Tools &amp; Platforms</p>
+        <div class="tag-row">
+          <span class="tag">Git &amp; GitHub</span>
+          <span class="tag">VS Code</span>
+          <span class="tag">Figma</span>
+          <span class="tag">XAMPP</span>
+          <span class="tag">Netlify</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SYSTEMS ================= -->
+  <section id="systems">
+    <div class="wrap reveal">
+      <p class="eyebrow">Systems</p>
+      <h2 class="section-title">Systems I've built</h2>
+      <p class="section-sub">
+        Click "Launch System" to open a live working version, or "Source Code" to view the project on GitHub.
+      </p>
+
+      <div class="systems__grid">
+
+        <!-- SYSTEM 1 -->
+        <article class="card">
+          <div class="card__head">
+            <span>SYS-01</span>
+            <span class="status"><span class="status-dot"></span> Live</span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Inventory Management System</h3>
+            <p class="card__desc">
+              A web-based system for tracking stock levels, recording
+              incoming and outgoing items, and generating simple reports
+              for a small business.
+            </p>
+            <div class="tag-row">
+              <span class="tag">PHP</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Bootstrap</span>
+            </div>
+          </div>
+          <div class="card__footer">
+            <!-- 🔧 Replace href with your live demo link -->
+            <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Launch System ↗</a>
+            <!-- 🔧 Replace href with your GitHub repo link -->
+            <a class="btn btn--ghost" href="#" target="_blank" rel="noopener">Source Code</a>
+          </div>
+        </article>
+
+        <!-- SYSTEM 2 -->
+        <article class="card">
+          <div class="card__head">
+            <span>SYS-02</span>
+            <span class="status"><span class="status-dot"></span> Live</span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Student Records Management System</h3>
+            <p class="card__desc">
+              A system for managing student profiles, grades, and class
+              schedules, with role-based access for admins and teachers.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Java</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Swing</span>
+            </div>
+          </div>
+          <div class="card__footer">
+            <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Launch System ↗</a>
+            <a class="btn btn--ghost" href="#" target="_blank" rel="noopener">Source Code</a>
+          </div>
+        </article>
+
+        <!-- SYSTEM 3 -->
+        <article class="card">
+          <div class="card__head">
+            <span>SYS-03</span>
+            <span class="status"><span class="status-dot"></span> Live</span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Online Ordering Web App</h3>
+            <p class="card__desc">
+              A responsive web app that lets customers browse a menu, add
+              items to a cart, and place orders online, with a simple
+              admin dashboard for managing orders.
+            </p>
+            <div class="tag-row">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Firebase</span>
+            </div>
+          </div>
+          <div class="card__footer">
+            <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Launch System ↗</a>
+            <a class="btn btn--ghost" href="#" target="_blank" rel="noopener">Source Code</a>
+          </div>
+        </article>
+
+        <!-- Duplicate / add more <article class="card">...</article> blocks for more systems -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap reveal">
+      <p class="eyebrow">Contact</p>
+      <h2 class="section-title">Let's work together</h2>
+      <p class="section-sub">
+        Feel free to reach out if you'd like to talk about an opportunity
+        or a project.
+      </p>
+
+      <div class="contact__grid">
+        <div class="contact__item">
+          <span class="eyebrow">Email</span>
+          <a href="mailto:juan.delacruz@email.com">juan.delacruz@email.com</a>
+        </div>
+        <div class="contact__item">
+          <span class="eyebrow">Phone</span>
+          <a href="tel:+639000000000">+63 900 000 0000</a>
+        </div>
+        <div class="contact__item">
+          <span class="eyebrow">GitHub</span>
+          <a href="#" target="_blank" rel="noopener">github.com/yourusername</a>
+        </div>
+        <div class="contact__item">
+          <span class="eyebrow">LinkedIn</span>
+          <a href="#" target="_blank" rel="noopener">linkedin.com/in/yourusername</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Juan Dela Cruz — Built with HTML, CSS &amp; JavaScript
+  </footer>
+
+  <script>
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    const nav = document.getElementById('nav');
+    const navToggle = document.getElementById('navToggle');
+    navToggle.addEventListener('click', () => nav.classList.toggle('open'));
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.nav__links a').forEach(link => {
+      link.addEventListener('click', () => nav.classList.remove('open'));
+    });
+
+    // Scroll reveal animation
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
